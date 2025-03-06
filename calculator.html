@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        .calculator {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        .calculator h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .calculator input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .calculator .buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        .calculator button {
+            padding: 15px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .calculator button:hover {
+            background-color: #45a049;
+        }
+        .calculator .result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<div class="calculator">
+    <h2>Simple Calculator</h2>
+    <input type="number" id="num1" placeholder="Enter first number">
+    <input type="number" id="num2" placeholder="Enter second number">
+
+    <div class="buttons">
+        <button onclick="calculate('add')">Add</button>
+        <button onclick="calculate('subtract')">Subtract</button>
+        <button onclick="calculate('multiply')">Multiply</button>
+        <button onclick="calculate('divide')">Divide</button>
+    </div>
+
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+    function calculate(operation) {
+        // Get the input values
+        const num1 = parseFloat(document.getElementById('num1').value);
+        const num2 = parseFloat(document.getElementById('num2').value);
+        let result;
+
+        // Perform the calculation based on the operation
+        switch (operation) {
+            case 'add':
+                result = num1 + num2;
+                break;
+            case 'subtract':
+                result = num1 - num2;
+                break;
+            case 'multiply':
+                result = num1 * num2;
+                break;
+            case 'divide':
+                if (num2 !== 0) {
+                    result = num1 / num2;
+                } else {
+                    result = "Cannot divide by zero!";
+                }
+                break;
+            default:
+                result = "Invalid operation";
+        }
+
+        // Display the result
+        document.getElementById('result').innerText = `Result: ${result}`;
+    }
+</script>
+
+</body>
+</html>
